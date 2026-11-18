@@ -1,0 +1,6 @@
+---
+- name: Create symlink to $HOME/.tmux.conf
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/dotfiles/files/.tmux.conf"
+    dest: $HOME/.tmux.conf
+    state: link

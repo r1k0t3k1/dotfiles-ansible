@@ -1,0 +1,23 @@
+---
+- name: Create symlink to $HOME/.vim
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/dotfiles/files/vimfiles"
+    dest: $HOME/.vim
+    state: link
+
+- name: Install coc.nvim
+  ansible.builtin.shell: curl -fsSL https://cocnvim.com/install-coc.sh | bash -s -- --editor=vim --yes
+  args:
+    executable: /usr/bin/bash
+  register: result
+
+- name: Install terraform-ls
+  ansible.builtin.unarchive:
+    src: https://releases.hashicorp.com/terraform-ls/0.39.1/terraform-ls_0.39.1_linux_amd64.zip
+    dest: /usr/local/bin
+    remote_src: true
+    include:
+      - terraform-ls
+    mode: "0755"
+    creates: /usr/local/bin/terraform-ls
+  become: true

@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  roles:
+    - { role: packages, tag: [packages] }
+    - { role: zsh, tag: [zsh] }
+    - { role: vim, tag: [vim] }
+    - { role: tmux, tag: [tmux] }

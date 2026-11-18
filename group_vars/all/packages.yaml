@@ -1,0 +1,19 @@
+---
+pacman_packages:
+  # util
+  - vim
+  - git
+  - fzf
+  - tmux
+  - zsh
+  - firefox
+  - obsidian
+  - openssh
+  - wireguard-tools
+  - unzip
+  # locale
+  - noto-fonts-cjk
+  # develep
+  - terraform
+  - aws-cli-v2
+  - nodejs

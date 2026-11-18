@@ -1,0 +1,17 @@
+---
+- name: Change default shell to zsh
+  ansible.builtin.user:
+    name: rikoteki
+    shell: /usr/bin/zsh
+  become: true
+
+- name: Create symlink to $HOME/.zshrc
+  ansible.builtin.file:
+    src: "{{ playbook_dir }}/roles/dotfiles/files/.zshrc"
+    dest: $HOME/.zshrc
+    state: link
+
+- name: Install zsh-suggestions
+  ansible.builtin.git:
+    repo: "https://github.com/zsh-users/zsh-autosuggestions"
+    dest: $HOME/.zsh/zsh-autosuggestions
